@@ -84,6 +84,12 @@
 #pragma MARK Success
 
 /// Success
++ (nonnull MBProgressHUD *)showSuccess {
+    
+   return [MBProgressHUD showSuccess:nil];
+}
+
+/// Success
 + (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable )message {
     
     return [MBProgressHUD showSuccess:message toView:HUD_TO_VIEW];
@@ -96,6 +102,12 @@
 }
 
 #pragma MARK Error
+
+/// Error
++ (nonnull MBProgressHUD *)showError {
+    
+    return [MBProgressHUD showError:nil];
+}
 
 /// Error
 + (nonnull MBProgressHUD *)showError:(NSString * _Nullable)message {
@@ -140,6 +152,12 @@
 }
 
 #pragma MARK Loading
+
+/// Loading (MBProgressHUDModeIndeterminate)
++ (nonnull MBProgressHUD *)showLoading {
+    
+    return [MBProgressHUD showLoading:nil];
+}
 
 /// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
 + (nonnull MBProgressHUD *)showLoading:(NSString * _Nullable)message {

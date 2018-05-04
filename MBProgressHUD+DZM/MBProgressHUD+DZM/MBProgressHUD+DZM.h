@@ -13,6 +13,9 @@
 #pragma MARK Success
 
 /// Success
++ (nonnull MBProgressHUD *)showSuccess;
+
+/// Success - 可附带:文字
 + (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable)message;
 
 /// Success - 可附带:文字
@@ -21,6 +24,9 @@
 #pragma MARK Error
 
 /// Error
++ (nonnull MBProgressHUD *)showError;
+
+/// Error - 可附带:文字
 + (nonnull MBProgressHUD *)showError:(NSString * _Nullable)message;
 
 /// Error - 可附带:文字
@@ -38,6 +44,9 @@
 + (nonnull MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nonnull)view;
 
 #pragma MARK Loading
+
+/// Loading (MBProgressHUDModeIndeterminate)
++ (nonnull MBProgressHUD *)showLoading;
 
 /// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
 + (nonnull MBProgressHUD *)showLoading:(NSString * _Nullable)message;
