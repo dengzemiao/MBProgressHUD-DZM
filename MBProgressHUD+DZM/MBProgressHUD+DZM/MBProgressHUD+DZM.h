@@ -19,7 +19,7 @@
 + (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable)message;
 
 /// Success - 可附带:文字
-+ (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nonnull)view;
++ (nullable MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
 
 #pragma MARK Error
 
@@ -30,7 +30,7 @@
 + (nonnull MBProgressHUD *)showError:(NSString * _Nullable)message;
 
 /// Error - 可附带:文字
-+ (nonnull MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nonnull)view;
++ (nullable MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
 
 #pragma MARK Message
 
@@ -38,21 +38,21 @@
 + (nonnull MBProgressHUD *)showMessage:(NSString * _Nullable)message;
 
 /// Message - 可附带:文字
-+ (nonnull MBProgressHUD *)showMessage:(NSString * _Nullable)message toView:(UIView * _Nonnull)view;
++ (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
 
 /// Message - 可附带:文字+偏移调整
-+ (nonnull MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nonnull)view;
++ (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nullable)view;
 
 #pragma MARK Loading
 
 /// Loading (MBProgressHUDModeIndeterminate)
 + (nonnull MBProgressHUD *)showLoading;
 
-/// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
-+ (nonnull MBProgressHUD *)showLoading:(NSString * _Nullable)message;
+/// Loading (MBProgressHUDModeIndeterminate)
++ (nullable MBProgressHUD *)showLoading:(UIView * _Nullable)view;
 
 /// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
-+ (nonnull MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nonnull)view;
++ (nullable MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
 
 #pragma MARK Hide
 
@@ -60,18 +60,18 @@
 + (void)hide;
 
 /// Hide
-+ (void)hide:(UIView * _Nonnull)view;
++ (void)hide:(UIView * _Nullable)view;
 
 #pragma MARK 公用HUD对象
 
 /// HUD
-+ (nonnull MBProgressHUD *)HUD:(UIView * _Nonnull)view;
++ (nullable MBProgressHUD *)HUD:(UIView * _Nullable)view;
 
 /// HUD - 可附带:自定义View
-+ (nonnull MBProgressHUD *)HUD:(UIView * _Nonnull)view customView:(UIView * _Nonnull)customView;
++ (nullable MBProgressHUD *)HUD:(UIView * _Nullable)view customView:(UIView * _Nullable)customView;
 
 /// HUD (自动隐藏) - 可附带:文字+图片
-+ (nonnull MBProgressHUD *)HUD:(UIView * _Nonnull)view text:(NSString * _Nullable)text icon:(NSString * _Nullable)icon;
++ (nullable MBProgressHUD *)HUD:(UIView * _Nullable)view text:(NSString * _Nullable)text icon:(NSString * _Nullable)icon;
 
 #pragma MARK CustomView
 

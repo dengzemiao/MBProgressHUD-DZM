@@ -22,7 +22,9 @@
 #pragma MARK 公用HUD对象
 
 /// HUD
-+ (nonnull MBProgressHUD *)HUD:(UIView * _Nonnull)view {
++ (nullable MBProgressHUD *)HUD:(UIView * _Nullable)view {
+    
+    if (view == nil) { return nil; }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     
@@ -34,7 +36,9 @@
 }
 
 /// HUD - 可附带:自定义View
-+ (nonnull MBProgressHUD *)HUD:(UIView * _Nonnull)view customView:(UIView * _Nonnull)customView {
++ (nullable MBProgressHUD *)HUD:(UIView * _Nullable)view customView:(UIView * _Nullable)customView {
+    
+    if (view == nil) { return nil; }
     
     MBProgressHUD *hud = [MBProgressHUD HUD:view];
     
@@ -46,8 +50,10 @@
 }
 
 /// HUD (自动隐藏) - 可附带:文字+图片
-+ (nonnull MBProgressHUD *)HUD:(UIView * _Nonnull)view text:(NSString * _Nullable)text icon:(NSString * _Nullable)icon {
++ (nullable MBProgressHUD *)HUD:(UIView * _Nullable)view text:(NSString * _Nullable)text icon:(NSString * _Nullable)icon {
 
+    if (view == nil) { return nil; }
+    
     MBProgressHUD *hud = [MBProgressHUD HUD:view customView:[MBProgressHUD Custom_ImageView:icon]];
     
     hud.label.text = text;
@@ -96,7 +102,7 @@
 }
 
 /// Success - 可附带:文字
-+ (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nonnull)view {
++ (nullable MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
     
     return [MBProgressHUD HUD:view text:message icon:HUD_ICON_PATH(@"right")];
 }
@@ -116,7 +122,7 @@
 }
 
 /// Error - 可附带:文字
-+ (nonnull MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nonnull)view {
++ (nullable MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
     
     return [MBProgressHUD HUD:view text:message icon:HUD_ICON_PATH(@"error")];
 }
@@ -130,13 +136,15 @@
 }
 
 /// Message - 可附带:文字
-+ (nonnull MBProgressHUD *)showMessage:(NSString * _Nullable)message toView:(UIView * _Nonnull)view {
++ (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
     
     return [MBProgressHUD showMessage:message offset:CGPointZero toView:view];
 }
 
 /// Message - 可附带:文字+偏移调整
-+ (nonnull MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nonnull)view {
++ (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nullable)view {
+    
+    if (view == nil) { return nil; }
     
     MBProgressHUD *hud = [MBProgressHUD HUD:view];
     
@@ -156,17 +164,19 @@
 /// Loading (MBProgressHUDModeIndeterminate)
 + (nonnull MBProgressHUD *)showLoading {
     
-    return [MBProgressHUD showLoading:nil];
+    return [MBProgressHUD showLoading:HUD_TO_VIEW];
 }
 
-/// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
-+ (nonnull MBProgressHUD *)showLoading:(NSString * _Nullable)message {
+/// Loading (MBProgressHUDModeIndeterminate)
++ (nullable MBProgressHUD *)showLoading:(UIView * _Nullable)view {
     
-    return [MBProgressHUD showLoading:message toView:HUD_TO_VIEW];
+    return [MBProgressHUD showLoading:nil toView:view];
 }
 
 /// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
-+ (nonnull MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nonnull)view {
++ (nullable MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
+    
+    if (view == nil) { return nil; }
     
     MBProgressHUD *tempHUD = [MBProgressHUD HUD:view];;
     
@@ -184,7 +194,7 @@
 }
 
 /// Hide
-+ (void)hide:(UIView * _Nonnull)view {
++ (void)hide:(UIView * _Nullable)view {
     
     [MBProgressHUD hideHUDForView:view animated:YES];
 }
