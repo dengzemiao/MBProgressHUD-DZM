@@ -196,6 +196,8 @@
 /// Hide
 + (void)hide:(UIView * _Nullable)view {
     
+    if (view == nil) { return ; }
+    
     [MBProgressHUD hideHUDForView:view animated:YES];
 }
 
