@@ -13,7 +13,7 @@
 #define HUD_HIDE_AFTERDELAY 0.7
 
 /// 默认现实目标视图
-#define HUD_TO_VIEW [UIApplication sharedApplication].keyWindow.rootViewController.view
+#define HUD_TO_VIEW [UIApplication sharedApplication].keyWindow
 
 #import "MBProgressHUD+DZM.h"
 
