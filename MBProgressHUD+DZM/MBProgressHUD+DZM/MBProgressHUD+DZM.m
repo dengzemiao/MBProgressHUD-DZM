@@ -10,7 +10,7 @@
 #define HUD_ICON_PATH(icon) [NSString stringWithFormat:@"MBProgressHUD.bundle/%@",icon]
 
 /// 隐藏延迟
-#define HUD_HIDE_AFTERDELAY 0.7
+#define HUD_HIDE_AFTERDELAY 2.0
 
 /// 默认现实目标视图
 #define HUD_TO_VIEW [UIApplication sharedApplication].keyWindow
@@ -66,7 +66,7 @@
 #pragma MARK CustomView
 
 /// CustomView - ImageView
-+ (nonnull UIImageView *)Custom_ImageView:(NSString *)icon {
++ (nonnull UIImageView *)Custom_ImageView:(NSString * _Nonnull)icon {
     
     UIImage *image = [[UIImage imageNamed:icon] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
@@ -96,7 +96,7 @@
 }
 
 /// Success
-+ (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable )message {
++ (nonnull MBProgressHUD *)showSuccess:(NSString * _Nullable)message {
     
     return [MBProgressHUD showSuccess:message toView:HUD_TO_VIEW];
 }
@@ -104,7 +104,17 @@
 /// Success - 可附带:文字
 + (nullable MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
     
-    return [MBProgressHUD HUD:view text:message icon:HUD_ICON_PATH(@"right")];
+    return [MBProgressHUD showSuccess:message toView:view toBelowView:nil];
+}
+
+/// Success - 可附带:文字+插入指定视图下面
++ (nullable MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView {
+    
+    MBProgressHUD *hud = [MBProgressHUD HUD:view text:message icon:HUD_ICON_PATH(@"right")];
+    
+    if (belowView != nil) { [view insertSubview:hud belowSubview:belowView]; }
+    
+    return hud;
 }
 
 #pragma MARK Error
@@ -124,7 +134,17 @@
 /// Error - 可附带:文字
 + (nullable MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
     
-    return [MBProgressHUD HUD:view text:message icon:HUD_ICON_PATH(@"error")];
+    return [MBProgressHUD showError:message toView:view toBelowView:nil];
+}
+
+/// Error - 可附带:文字+插入指定视图下面
++ (nullable MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView {
+    
+    MBProgressHUD *hud = [MBProgressHUD HUD:view text:message icon:HUD_ICON_PATH(@"error")];
+    
+    if (belowView != nil) { [view insertSubview:hud belowSubview:belowView]; }
+    
+    return hud;
 }
 
 #pragma MARK Message
@@ -144,6 +164,12 @@
 /// Message - 可附带:文字+偏移调整
 + (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nullable)view {
     
+    return [MBProgressHUD showMessage:message offset:CGPointZero toView:view toBelowView:nil];
+}
+
+/// Message - 可附带:文字+偏移调整+插入指定视图下面
++ (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView {
+    
     if (view == nil) { return nil; }
     
     MBProgressHUD *hud = [MBProgressHUD HUD:view];
@@ -155,6 +181,8 @@
     hud.offset = offset; // 例子: CGPointMake(0.f, MBProgressMaxOffset)
     
     [hud hideAnimated:YES afterDelay:HUD_HIDE_AFTERDELAY];
+    
+    if (belowView != nil) { [view insertSubview:hud belowSubview:belowView]; }
     
     return hud;
 }
@@ -176,13 +204,27 @@
 /// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
 + (nullable MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nullable)view {
     
+    return [MBProgressHUD showLoading:nil toView:view toBelowView:nil];
+}
+
+/// Loading (MBProgressHUDModeIndeterminate) - 可附带:插入指定视图下面
++ (nullable MBProgressHUD *)showLoading:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView {
+    
+    return [MBProgressHUD showLoading:nil toView:view toBelowView:belowView];
+}
+
+/// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字+插入指定视图下面
++ (nullable MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView {
+    
     if (view == nil) { return nil; }
     
-    MBProgressHUD *tempHUD = [MBProgressHUD HUD:view];;
+    MBProgressHUD *hud = [MBProgressHUD HUD:view];;
     
-    tempHUD.label.text = message;
+    hud.label.text = message;
     
-    return tempHUD;
+    if (belowView != nil) { [view insertSubview:hud belowSubview:belowView]; }
+    
+    return hud;
 }
 
 #pragma MARK Hide

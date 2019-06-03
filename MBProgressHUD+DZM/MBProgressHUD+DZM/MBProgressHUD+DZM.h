@@ -21,6 +21,9 @@
 /// Success - 可附带:文字
 + (nullable MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
 
+/// Success - 可附带:文字+插入指定视图下面
++ (nullable MBProgressHUD *)showSuccess:(NSString * _Nullable)message toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView;
+
 #pragma MARK Error
 
 /// Error
@@ -31,6 +34,9 @@
 
 /// Error - 可附带:文字
 + (nullable MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
+
+/// Error - 可附带:文字+插入指定视图下面
++ (nullable MBProgressHUD *)showError:(NSString * _Nullable)message toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView;
 
 #pragma MARK Message
 
@@ -43,6 +49,9 @@
 /// Message - 可附带:文字+偏移调整
 + (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nullable)view;
 
+/// Message - 可附带:文字+偏移调整+插入指定视图下面
++ (nullable MBProgressHUD *)showMessage:(NSString * _Nullable)message offset:(CGPoint)offset toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView;
+
 #pragma MARK Loading
 
 /// Loading (MBProgressHUDModeIndeterminate)
@@ -53,6 +62,12 @@
 
 /// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字
 + (nullable MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nullable)view;
+
+/// Loading (MBProgressHUDModeIndeterminate) - 可附带:插入指定视图下面
++ (nullable MBProgressHUD *)showLoading:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView;
+
+/// Loading (MBProgressHUDModeIndeterminate) - 可附带:文字+插入指定视图下面
++ (nullable MBProgressHUD *)showLoading:(NSString * _Nullable)message toView:(UIView * _Nullable)view toBelowView:(UIView * _Nullable)belowView;
 
 #pragma MARK Hide
 
@@ -76,7 +91,7 @@
 #pragma MARK CustomView
 
 /// CustomView - ImageView
-+ (nonnull UIImageView *)Custom_ImageView:(NSString *)icon;
++ (nonnull UIImageView *)Custom_ImageView:(NSString * _Nonnull)icon;
 
 /// CustomView - Right
 + (nonnull UIView *)Custom_Right;
